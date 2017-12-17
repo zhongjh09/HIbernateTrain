@@ -1,6 +1,7 @@
 package jch.personal.train.hibernate5.jph2.ch03.simple.model;
 
 import com.sun.istack.internal.NotNull;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import javax.validation.constraints.Future;
@@ -11,6 +12,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@org.hibernate.annotations.Cache(
+        usage = CacheConcurrencyStrategy.READ_WRITE
+)
 public class Item {
 
     @Id
@@ -37,6 +41,9 @@ public class Item {
 
     protected BigDecimal buyNowPrice;
 
+    /**
+     * 同一个商品用户可以多次出价，因此也是一个具有一对多的多样性关联。
+     */
     @Transient
     protected Set<Bid> bids = new HashSet<>();
 
@@ -92,6 +99,7 @@ public class Item {
     }
 
     public void addBid(Bid bid) {
+        // 一个便利方法会简化关系管理，且具有保护意识
         if (bid == null) {
             throw new NullPointerException("不可添加一个空的Bid");
         }
