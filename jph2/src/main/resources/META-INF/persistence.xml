@@ -1,0 +1,26 @@
+<persistence
+        version="2.1"
+        xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence_2_1.xsd" >
+
+    <!-- 一个持久化单元 -->
+    <persistence-unit name="HelloWorldPU">
+        <!-- JPA数据库连接 -->
+        <jta-data-source>jphTrainDB</jta-data-source>
+        <!-- 持久化类 -->
+        <class>jch.personal.train.hibernate5.jph2.ch02.helloworld.model.Message</class>
+        <!-- 为映射的类禁用扫描 -->
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <!-- 一些属性 -->
+        <properties>
+            <!-- 删除/重建SQL架构 -->
+            <property name="javax.persistence.schema-generation.database.action" value="drop-and-create" />
+            <!-- 格式化SQL -->
+            <property name="hibernate.format_sql" value="true" />
+            <!-- 使用SQL起因注释 -->
+            <property name="hibernate.use_sql_comments" value="true" />
+        </properties>
+    </persistence-unit>
+
+</persistence>
