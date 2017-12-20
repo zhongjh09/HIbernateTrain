@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<hibernate-mapping
+        xmlns="http://www.hibernate.org/xsd/hibernate-mapping"
+        package="jch.personal.train.hibernate5.jph2.ch03.simple.model"
+        default-access="field"> <!-- 声明元数据 -->
+
+    <!-- 实体类映射 -->
+    <class name="Item">
+        <id name="id">
+            <generator class="native" />
+        </id>
+        <property name="name" />
+        <property name="auctionEnd" type="timestamp" />
+    </class>
+
+    <!-- 外部化查询 -->
+    <query name="findItemsHibernate">select i from Item i</query>
+
+    <!-- 辅助架构DDL -->
+    <database-object>
+        <create>create index ITEM_NAME_IDX on ITEM(NAME)</create>
+        <drop>drop index if exists ITEM_NAME_IDX</drop>
+    </database-object>
+
+</hibernate-mapping>

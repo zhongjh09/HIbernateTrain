@@ -23,4 +23,14 @@
         </properties>
     </persistence-unit>
 
+    <persistence-unit name="SimpleXMLCompletePU">
+        <jta-data-source>jphTrainDB</jta-data-source>
+        <mapping-file>simple/Mappings.xml</mapping-file>
+        <mapping-file>simple/Queries.xml</mapping-file>
+
+        <properties>
+            <property name="hibernate.archive.autodetection" value="none" />
+        </properties>
+    </persistence-unit>
+
 </persistence>

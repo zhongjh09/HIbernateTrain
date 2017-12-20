@@ -1,0 +1,33 @@
+<entity-mappings
+        version="2.1"
+        xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+            http://xmlns.jcp.org/xml/ns/persistence/orm_2_1.xsd">
+
+    <!-- 全局元数据 -->
+    <persistence-unit-metadata>
+        <!-- 忽略XML文件中所有的注解以及所有映射元数据 -->
+        <xml-mapping-metadata-complete />
+        <!-- 一些默认值 -->
+        <persistence-unit-defaults>
+            <!-- 避开所有SQL列、表和其他名称：例如，如果SQL名称是关键字的话（比如USER） -->
+            <delimited-identifiers />
+        </persistence-unit-defaults>
+    </persistence-unit-metadata>
+
+    <entity class="jch.personal.train.hibernate5.jph2.ch03.simple.model.Item" access="FIELD">
+        <attributes>
+            <id name="id">
+                <generated-value strategy="AUTO" />
+            </id>
+            <basic name="name" />
+            <basic name="auctionEnd" >
+                <temporal>TIMESTAMP</temporal>
+            </basic>
+
+            <transient name="bids" />
+            <transient name="category" />
+        </attributes>
+    </entity>
+</entity-mappings>

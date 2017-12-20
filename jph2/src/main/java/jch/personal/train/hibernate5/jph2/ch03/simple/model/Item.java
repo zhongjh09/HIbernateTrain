@@ -12,9 +12,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@org.hibernate.annotations.Cache(
-        usage = CacheConcurrencyStrategy.READ_WRITE
-)
 public class Item {
 
     @Id
